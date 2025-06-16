@@ -121,7 +121,7 @@ class LoopRefactor(ast.NodeTransformer):
         ast.fix_missing_locations(tree)
         return ast.unparse(tree)
 
-    def get_modified_code(self, source_code):
+    def get_refactored_code(self, source_code):
         """Parse source code, refactor loops, and return modified code."""
         try:
             tree = ast.parse(source_code)

@@ -128,13 +128,11 @@ class ErrorHandlerRefactor(ast.NodeTransformer):
         return node
 
     def refactor_error_handling(self, tree):
-        """Process the AST to add try-except blocks and return modified code."""
         self.visit(tree)
         ast.fix_missing_locations(tree)
         return ast.unparse(tree)
 
     def get_refacctored_code(self, source_code):
-        """Parse source code, add try-except blocks, and return modified code."""
         try:
             tree = ast.parse(source_code)
             return self.refactor_error_handling(tree)
